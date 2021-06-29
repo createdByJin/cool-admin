@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+
+    include("produtos/listaCategorias.php");
+?>
+
 <html lang="en">
 
 <head>
@@ -33,10 +39,6 @@
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
-    <?php
-        include("produtos/listaCategorias.php");
-    ?>
-
 </head>
 
 <body class="animsition">
@@ -69,12 +71,14 @@
                     <div class="col-md-12">
                         <div class="welcome2-inner m-t-60">
                             <div class="welcome2-greeting">
-                                <h1 class="title-6">Bem vindo
-                                    <span>John</span>
+                                <h1 class="title-6">
+                                    <span>
+                                        <?php echo $_SESSION["nome"]; ?>
+                                    </span>
                                 </h1>
                                 <ul class="list-unstyled list-inline au-breadcrumb__list">
                                     <li class="list-inline-item active">
-                                        <a href="#">Sair
+                                        <a href="database/validaLogoff.php">Sair
                                             <span>
                                                 <i class="fas fa-sign-out-alt"></i>
                                             </span>
