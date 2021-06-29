@@ -47,18 +47,24 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="database/novoUsuario.php" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="id_usuario" value="default">
+                                </div>
                                 <div class="form-group">
                                     <label>Nome Completo</label>
                                     <input class="au-input au-input--full" type="text" name="nome" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label>Usuário</label>
-                                    <input class="au-input au-input--full" type="text" name="usuario" autocomplete="off">
+                                    <input class="au-input au-input--full" type="text" name="login" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label>Senha</label>
                                     <input class="au-input au-input--full" type="password" name="senha">
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="tipoUsuario" value="2">
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">CADASTRAR</button>
                             </form>
