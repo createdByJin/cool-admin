@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("produtos/listaCategorias.php");
+    include("produtos/listaProdutos.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Novo Cadastro - Drocsid</title>
+    <title>Consulta - Drocsid</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -58,7 +58,7 @@
                                         <span>/</span>
                                     </li>
                                     <li class="list-inline-item active">
-                                        <a href="#">Novo Cadastro</a>
+                                        <a href="#">Consulta</a>
                                     </li>
                                 </ul>
                             </div>
@@ -115,8 +115,11 @@
                                                 </span>
                                             </a>
                                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                                <li class="active">
+                                                <li>
                                                     <a href="#">Novo Cadastro</a>
+                                                </li>
+                                                <li class="active">
+                                                    <a href="#">Consulta</a>
                                                 </li>
                                                 <li>
                                                     <a href="categorias.php">Categorias</a>
@@ -126,95 +129,50 @@
                                     </ul>
                                 </nav>
                             </aside>
-                            <!-- END MENU SIDEBAR-->
+                            <!-- END MENU SIDEBAR -->
                         </div>
-                        <div class="col-xl-8">
-                            <!-- PAGE CONTENT-->
-                            <div class="page-content">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <strong>NOVO CADASTRO</strong>
-                                    </div>
-                                    <div class="card-body card-block">
-                                        <form action="produtos/inserirProduto.php" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label"></label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p class="form-control-static"></p>
-                                                    <input type="hidden" name="id-produto" value="default">
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="desc-input" class="form-control-label">Descrição</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="text" id="desc-input" name="desc-prod" placeholder="Digite aqui..." class="form-control">
-                                                    <div class="row form-group">
-                                                        <div class="col-12 col-md-9">
-                                                            <p class="form-control-static"></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="quant-input" class="form-control-label">Quantidade</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="number" id="quant-input" name="quant-prod" placeholder="Number" value="1" class="form-control col-md-4">
-                                                    <div class="row form-group">
-                                                        <div class="col-12 col-md-9">
-                                                            <p class="form-control-static"></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="select-categ" class="form-control-label">Categoria</label>
-                                                    <div class="row form-group">
-                                                        <div class="col-12 col-md-9">
-                                                            <p class="form-control-static"></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-4">
-                                                    <select name="categoria" id="select-categ" class="form-control">
-                                                        <option value="0">Selecione</option>
-                                                        <?php echo all_category(0); ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-dot-circle-o"></i> Salvar
-                                                </button>
-                                                <button type="reset" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-ban"></i> Limpar
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
+                        <div class="col-xl-9">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>CONSULTA</strong>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="copyright">
-                                            <p>Copyright © 2021 Drocsid. All rights reserved.</p>
+                                <div class="card-body card-block">
+                                    <form action="#" method="post" class="form-horizontal">
+                                        <div class="row form-group">
+                                            <div class="col col-md-12">
+                                                <div class="input-group">
+                                                    <div class="input-group-btn">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fa fa-search"></i> Pesquisar
+                                                        </button>
+                                                    </div>
+                                                    <input type="text" id="consulta" name="consulta-produtos" placeholder="Digite aqui..." class="form-control">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
-                            <!-- END PAGE CONTENT-->
+                            <!-- DATA TABLE -->
+                                <div class="table-responsive m-b-40">
+                                    <table class="table table-borderless table-data3">
+                                        <?php echo all_data(); ?>
+                                    </table>
+                                </div>
+                            <!-- END DATA TABLE -->
                         </div>
                     </div>
                 </div>
             </section>
         </div>
         <!-- END PAGE CONTENT  -->
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2021 Drocsid. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Jquery JS-->

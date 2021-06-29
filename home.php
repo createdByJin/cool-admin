@@ -113,6 +113,9 @@
                                                         <a href="novo-cadastro.php">Novo Cadastro</a>
                                                     </li>
                                                     <li>
+                                                        <a href="consulta.php">Consulta</a>
+                                                    </li>
+                                                    <li>
                                                         <a href="categorias.php">Categorias</a>
                                                     </li>
                                                 </ul>
