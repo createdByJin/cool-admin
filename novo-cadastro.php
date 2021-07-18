@@ -119,6 +119,9 @@
                                                     <a href="#">Novo Cadastro</a>
                                                 </li>
                                                 <li>
+                                                    <a href="consulta.php">Consulta</a>
+                                                </li>
+                                                <li>
                                                     <a href="categorias.php">Categorias</a>
                                                 </li>
                                             </ul>
@@ -130,6 +133,20 @@
                         </div>
                         <div class="col-xl-8">
                             <!-- PAGE CONTENT-->
+                            <?php if(isset($_SESSION["mensagem"])) : ?>
+                            <div class="sufee-alert alert with-close alert-<?= $_SESSION["tipo_mensagem"]; ?> alert-dismissible fade show">
+                                <span class="badge badge-pill badge-<?= $_SESSION["tipo_mensagem"]; ?>"><?= $_SESSION["titulo_mensagem"]; ?></span>
+                                    <?= $_SESSION["mensagem"]; ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <?php
+                                unset($_SESSION["mensagem"]);
+                                unset($_SESSION["tipo_mensagem"]);
+                                unset($_SESSION["titulo_mensagem"]);
+                            endif;
+                            ?>
                             <div class="page-content">
                                 <div class="card">
                                     <div class="card-header">

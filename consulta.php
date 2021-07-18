@@ -116,7 +116,7 @@
                                             </a>
                                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                                 <li>
-                                                    <a href="#">Novo Cadastro</a>
+                                                    <a href="novo-cadastro.php">Novo Cadastro</a>
                                                 </li>
                                                 <li class="active">
                                                     <a href="#">Consulta</a>
@@ -132,12 +132,26 @@
                             <!-- END MENU SIDEBAR -->
                         </div>
                         <div class="col-xl-9">
+                            <?php if(isset($_SESSION["mensagem"])) : ?>
+                                <div class="sufee-alert alert with-close alert-<?= $_SESSION["tipo_mensagem"]; ?> alert-dismissible fade show">
+                                    <span class="badge badge-pill badge-<?= $_SESSION["tipo_mensagem"]; ?>"><?= $_SESSION["titulo_mensagem"]; ?></span>
+                                        <?= $_SESSION["mensagem"]; ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <?php
+                                    unset($_SESSION["mensagem"]);
+                                    unset($_SESSION["tipo_mensagem"]);
+                                    unset($_SESSION["titulo_mensagem"]);
+                                endif;
+                                ?>
                             <div class="card">
                                 <div class="card-header">
                                     <strong>CONSULTA</strong>
                                 </div>
                                 <div class="card-body card-block">
-                                    <form action="#" method="post" class="form-horizontal">
+                                    <form action="produtos/consultaCriterio.php" method="post" class="form-horizontal">
                                         <div class="row form-group">
                                             <div class="col col-md-12">
                                                 <div class="input-group">
@@ -146,7 +160,7 @@
                                                             <i class="fa fa-search"></i> Pesquisar
                                                         </button>
                                                     </div>
-                                                    <input type="text" id="consulta" name="consulta-produtos" placeholder="Digite aqui..." class="form-control">
+                                                    <input type="text" id="consulta" name="consulta-produto" placeholder="Digite aqui..." class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -156,7 +170,7 @@
                             <!-- DATA TABLE -->
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
-                                        <?php echo all_data(); ?>
+                                        <?php echo all_data("ASC"); ?>
                                     </table>
                                 </div>
                             <!-- END DATA TABLE -->

@@ -1,7 +1,7 @@
 <?php
     // busca todos os registros do banco de dados
     function all_category($id_categoria) {
-
+        
         include("database/conection.php");
 
         $sql = "SELECT * FROM categorias WHERE id_categoria <> ".$id_categoria;
@@ -60,7 +60,6 @@
                 
                 $list .= '<tr>'
                             .'<td>'.$coluna["descricao"].'</td>'
-                            // .'<td class="text-right">$119,366.96</td>'
                         .'</tr>';
             }                
 

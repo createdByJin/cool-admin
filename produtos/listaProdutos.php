@@ -1,6 +1,7 @@
 <?php
     // busca todos os registros do banco de dados
-    function all_data() {
+    function all_data($classificacao) {
+        // classificacao = DESC/ASC
 
         include("database/conection.php");
 
@@ -9,7 +10,7 @@
                 INNER JOIN categorias c
                 ON c.id_categoria = p.categoria_id
                 ORDER BY p.id_produto
-                DESC";
+                $classificacao";
 
         $result = mysqli_query($conn,$sql);
         mysqli_close($conn);

@@ -120,6 +120,9 @@
                                                         <li>
                                                             <a href="novo-cadastro.php">Novo Cadastro</a>
                                                         </li>
+                                                        <li>
+                                                            <a href="consulta.php">Consulta</a>
+                                                        </li>
                                                         <li class="active">
                                                             <a href="#">Categorias</a>
                                                         </li>
@@ -132,6 +135,20 @@
                             </div>
                             <div class="col-xl-6">
                                 <!-- PAGE CONTENT-->
+                                    <?php if(isset($_SESSION["mensagem"])) : ?>
+                                    <div class="sufee-alert alert with-close alert-<?= $_SESSION["tipo_mensagem"]; ?> alert-dismissible fade show">
+                                        <span class="badge badge-pill badge-<?= $_SESSION["tipo_mensagem"]; ?>"><?= $_SESSION["titulo_mensagem"]; ?></span>
+                                            <?= $_SESSION["mensagem"]; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <?php
+                                        unset($_SESSION["mensagem"]);
+                                        unset($_SESSION["tipo_mensagem"]);
+                                        unset($_SESSION["titulo_mensagem"]);
+                                    endif;
+                                    ?>
                                     <div class="page-content">
                                         <div class="card">
                                             <div class="card-header">
@@ -180,15 +197,13 @@
                                     <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
                                         <div class="au-card-inner">
                                             <div class="table-responsive">
-                                                <table class="table table-top-countries">
-                                                    <tbody>
-                                                        <!-- <tr>
-                                                            <td>United States</td>
-                                                            <td class="text-right">$119,366.96</td>
-                                                        </tr> -->
-                                                        <?php echo list_category(); ?>
-                                                    </tbody>
-                                                </table>
+                                                <form action="produtos/excluirCategoria.php" method="post">
+                                                    <table class="table table-top-countries">
+                                                        <tbody>
+                                                            <?php echo list_category(); ?>
+                                                        </tbody>
+                                                    </table>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +57,16 @@
                                     <label>Senha</label>
                                     <input class="au-input au-input--full" type="password" name="senha" autocomplete="off">
                                 </div>
-                                <section class="alert-wrap p-t-70"></section>
+                                <?php if(isset($_SESSION["mensagem"])) : ?>
+                                <div class="alert alert-<?= $_SESSION["tipo_mensagem"]; ?>" role="alert">
+                                    <?= $_SESSION["mensagem"]; ?>
+                                </div>
+                                <?php
+                                    unset($_SESSION["mensagem"]);
+                                    unset($_SESSION["tipo_mensagem"]);
+                                endif;
+                                ?>
+                                <section class="alert-wrap p-t-40"></section>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">ENTRAR</button>
                                 
                             </form>

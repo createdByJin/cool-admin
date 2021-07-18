@@ -42,6 +42,8 @@
         }        
     }else{
         //Retorna para tela de login
+        $_SESSION["tipo_mensagem"] = "danger";
+        $_SESSION["mensagem"] = "E-mail ou senha inválidos";
         header('location: ../login.php');
     } 
 
