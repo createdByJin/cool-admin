@@ -20,6 +20,7 @@
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
+    <link rel="shortcut icon" href="images/icon/fav-icon-drocsid.png" type="image/x-icon">
 
     <!-- Title Page-->
     <title>Categorias - Drocsid</title>
