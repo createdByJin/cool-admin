@@ -1,5 +1,11 @@
 <?php
-    session_start();
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+    }
+    
+    if($_SESSION['logado'] != 1){
+        header("location: login.php");
+    }
 
     include("produtos/listaProdutos.php");
     include("produtos/listaCategorias.php");

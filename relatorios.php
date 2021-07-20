@@ -1,6 +1,10 @@
 <?php
-    if (session_status() !== PHP_SESSION_ACTIVE) {
+    if(session_status() !== PHP_SESSION_ACTIVE){
         session_start();
+    }
+    
+    if($_SESSION['logado'] != 1){
+        header("location: login.php");
     }
 ?>
 <!DOCTYPE html>

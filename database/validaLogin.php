@@ -13,6 +13,7 @@
     //$_SESSION - Variável criada pelo usuário no PHP
 
     include("conection.php");
+
     $sql = "SELECT * FROM usuarios "
             ." WHERE login = '$usuario' "
             ." AND senha = '$senha';";
@@ -31,7 +32,6 @@
         
         foreach ($arrayLogin as $coluna) {
             
-            //***Verificar os dados da consulta SQL
             $_SESSION['idTipoUsuario'] = $coluna['tipoUsuario_id'];
             $_SESSION["nome"] = $coluna["nome"];
             $_SESSION['logado'] = 1;
