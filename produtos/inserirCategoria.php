@@ -13,7 +13,7 @@
             
         $_SESSION["tipo_mensagem"] = "danger";
         $_SESSION["titulo_mensagem"] = "FALHA";
-        $_SESSION["mensagem"] = "Por favor preencha os campos!";
+        $_SESSION["mensagem"] = "Favor preencher os campos!";
     } else {
         $sql = "INSERT INTO categorias (id_categoria, descricao)
                 VALUES ($id_categoria, '$desc_categoria')";

@@ -17,7 +17,7 @@
             
         $_SESSION["tipo_mensagem"] = "danger";
         $_SESSION["titulo_mensagem"] = "FALHA";
-        $_SESSION["mensagem"] = "Por favor preencha todos os campos!";
+        $_SESSION["mensagem"] = "Favor preencher todos os campos!";
     } else {
         $sql = "INSERT INTO produtos (id_produto, descricao, quantidade, categoria_id)"
                 ."VALUES ($id_prod, '$desc_prod', $quant_prod, '$categ_prod')";

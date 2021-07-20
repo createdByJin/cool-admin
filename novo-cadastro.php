@@ -165,8 +165,8 @@
                                     <div class="card-header">
                                         <strong>NOVO CADASTRO</strong>
                                     </div>
-                                    <div class="card-body card-block">
-                                        <form action="produtos/inserirProduto.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <form action="produtos/inserirProduto.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <div class="card-body card-block">
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label class=" form-control-label"></label>
@@ -218,12 +218,12 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-                                                <button type="reset" class="btn btn-danger btn-sm">Limpar</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                                            <button type="reset" class="btn btn-danger btn-sm">Limpar</button>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">

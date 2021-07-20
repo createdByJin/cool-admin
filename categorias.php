@@ -166,8 +166,8 @@
                                             <div class="card-header">
                                                 <strong>NOVA CATEGORIA</strong>
                                             </div>
-                                            <div class="card-body card-block">
-                                                 <form action="produtos/inserirCategoria.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            <form action="produtos/inserirCategoria.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                <div class="card-body card-block">
                                                     <div class="row form-group">
                                                         <div class="col col-md-3">
                                                             <label class=" form-control-label"></label>
@@ -190,12 +190,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer">
-                                                        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-                                                        <button type="reset" class="btn btn-danger btn-sm">Limpar</button>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                                                    <button type="reset" class="btn btn-danger btn-sm">Limpar</button>
+                                                </div>
+                                            </form>
                                         </div> 
                                     </div>
                                 <!-- END PAGE CONTENT-->
@@ -206,7 +206,7 @@
                                         <div class="au-card-inner">
                                             <div class="table-responsive">
                                                 <form action="produtos/excluirCategoria.php" method="post">
-                                                    <table class="table table-top-countries">
+                                                    <table class="table table-top-countries" style="height: 400px;overflow-y: scroll; display:block;">
                                                         <tbody>
                                                             <?php echo list_category(); ?>
                                                         </tbody>
@@ -218,6 +218,7 @@
                                 </div>
                             <!-- END BLUE TABLE -->                 
                         </div>
+                        <section class="alert-wrap p-t-70"></section>
                     </div>
                 </section>
             </div>
