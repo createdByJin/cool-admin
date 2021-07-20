@@ -43,7 +43,7 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                            <img src="images/icon/drocsid-photo.png" alt="drocsid">
                             </a>
                         </div>
                         <div class="login-form">
@@ -56,16 +56,13 @@
                                     <label>Senha</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
-                               
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Login</button>
-                                
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Jquery JS-->

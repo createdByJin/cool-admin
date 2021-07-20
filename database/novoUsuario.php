@@ -1,24 +1,50 @@
 <?php
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+    }
+
+    $_SESSION['logado'] = 0;
+
     $id_usuario = $_POST["id_usuario"];
     $nome = $_POST["nome"];
     $login = $_POST["login"];
     $senha = $_POST["senha"];
     $tipoUsuario = $_POST["tipoUsuario"];
     
-    include("conection.php");
+    if($nome == 0 || $nome == "")
+    {
+        //Retorna para tela de cadastro
+        $_SESSION["tipo_mensagem"] = "danger";
+        $_SESSION["mensagem"] = "Favor preencher todos os campos.";
 
-    // var_dump($id_usuario);
-    // var_dump($nome);
-    // var_dump($login);
-    // var_dump($senha);
-    // var_dump($tipoUsuario);
-    // die();
+        header('location: ../cadastro.php');
+    }
+    else if($login == 0 || $login == "")
+    {
+        //Retorna para tela de cadastro
+        $_SESSION["tipo_mensagem"] = "danger";
+        $_SESSION["mensagem"] = "Favor preencher todos os campos.";
 
-    $sql = "INSERT INTO usuarios (id_usuario, nome, login, senha, tipoUsuario_id)"
-            ."VALUES ($id_usuario, '$nome', '$login', '$senha', $tipoUsuario)";
+        header('location: ../cadastro.php');
+    }
+    else if($senha == 0 || $senha == "")
+    {
+        //Retorna para tela de cadastro
+        $_SESSION["tipo_mensagem"] = "danger";
+        $_SESSION["mensagem"] = "Favor preencher todos os campos.";
 
-    $result = mysqli_query($conn, $sql);
-    mysqli_close($conn);
+        header('location: ../cadastro.php');
+    }
+    else
+    {
+        include("conection.php");
 
-    header("location: ../login.php");
+        $sql = "INSERT INTO usuarios (id_usuario, nome, login, senha, tipoUsuario_id)"
+                ."VALUES ($id_usuario, '$nome', '$login', '$senha', $tipoUsuario)";
+
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+
+        header("location: ../login.php");
+    }
 ?>

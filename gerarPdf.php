@@ -19,7 +19,7 @@
     } else if ($produtos != NULL && $categorias != NULL)
     {
         // falta implementar o PDF para todos os campos selecionados
-    }else if ($produtos == NULL)
+    } else if ($produtos == NULL)
     {
         header("location: gerarPdfCategoria.php");
     } else

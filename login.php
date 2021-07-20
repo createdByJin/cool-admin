@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,14 +41,14 @@
 </head>
 
 <body class="animsition">
-    <div class="page-wrapper">
+    <!-- <div class="page-wrapper"> -->
         <div class="page-content--bge5">
             <div class="container">
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                                <img src="images/icon/drocsid-photo.png" alt="drocsid">
                             </a>
                         </div>
                         <div class="login-form">
@@ -67,8 +71,7 @@
                                 endif;
                                 ?>
                                 <section class="alert-wrap p-t-40"></section>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">ENTRAR</button>
-                                
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">ENTRAR</button>    
                             </form>
                             <div class="register-link">
                                 <p>
@@ -81,7 +84,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
