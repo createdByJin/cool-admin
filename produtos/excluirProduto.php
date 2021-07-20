@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $id_prod = $_POST["id_produto"];
     
     include("../database/conection.php");

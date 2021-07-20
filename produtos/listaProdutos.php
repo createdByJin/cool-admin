@@ -5,12 +5,17 @@
 
         include("database/conection.php");
 
-        $sql = "SELECT p.id_produto, p.descricao, p.quantidade, c.descricao as categoria
-                FROM produtos p
-                INNER JOIN categorias c
-                ON c.id_categoria = p.categoria_id
-                ORDER BY p.id_produto
-                $classificacao";
+        $_SESSION["lista_produto"] = "";
+
+        $sql = "SELECT p.id_produto, p.descricao, p.quantidade, c.descricao as categoria "
+                ." FROM produtos p "
+                ." INNER JOIN categorias c "
+                ." ON c.id_categoria = p.categoria_id "
+                ." ORDER BY p.id_produto "
+                .$classificacao;
+
+        // var_dump($sql);
+        // die();
 
         $result = mysqli_query($conn,$sql);
         mysqli_close($conn);
@@ -24,16 +29,16 @@
                 
             $array = array();
 
-            $list .=    '<thead>'
-                            .'<tr>'
-                                .'<th>ID</th>'
-                                .'<th>DESCRIÇÃO</th>'
-                                .'<th>QUANTIDADE</th>'
-                                .'<th>CATEGORIA</th>'
-                                .'<th>AÇÃO</th>'
-                            .'</tr>'
-                        .'</thead>'
-                        .'<tbody>';
+            $list .= '<thead>'
+                        .'<tr>'
+                            .'<th>ID</th>'
+                            .'<th>DESCRIÇÃO</th>'
+                            .'<th>QUANTIDADE</th>'
+                            .'<th>CATEGORIA</th>'
+                            .'<th>AÇÃO</th>'
+                        .'</tr>'
+                    .'</thead>'
+                    .'<tbody>';
 
             while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 array_push($array, $linha);
@@ -85,8 +90,8 @@
                                         .'</div>'
                                     .'<!-- end modal small -->'
                                 .'</td>'
-                            .'</tr>'
-                        .'</tbody>';
+                            .'</tr>';
+                       
             }
 
         } else {

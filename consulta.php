@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $_SESSION["paginaConsulta"] = true;
     include("produtos/listaProdutos.php");
 ?>
 <!DOCTYPE html>
@@ -170,7 +171,13 @@
                             <!-- DATA TABLE -->
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
-                                        <?php echo all_data("ASC"); ?>
+                                        <?php
+                                            if($_SESSION["lista_produto"] == "") {
+                                                echo all_data("ASC");
+                                            } else {
+                                                echo $_SESSION["lista_produto"];
+                                            }
+                                        ?>
                                     </table>
                                 </div>
                             <!-- END DATA TABLE -->
