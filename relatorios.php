@@ -1,6 +1,7 @@
 <?php
-    session_start();
-    include("produtos/listaProdutos.php");
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Home - Drocsid</title>
+    <title>Relatórios - Drocsid</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -41,6 +42,7 @@
 
 <body class="animsition">
     <div class="page-wrapper">
+       
         <!-- WELCOME-->
         <section class="welcome2 p-t-40 p-b-55">
             <div class="container">
@@ -51,7 +53,7 @@
                                 <span class="au-breadcrumb-span">Você está em:</span>
                                 <ul class="list-unstyled list-inline au-breadcrumb__list">
                                     <li class="list-inline-item active">
-                                        <a href="#">Home</a>
+                                        <a href="#">Relatórios</a>
                                     </li>
                                 </ul>
                             </div>
@@ -62,7 +64,7 @@
                     <div class="col-md-12">
                         <div class="welcome2-inner m-t-60">
                             <div class="welcome2-greeting">
-                                <h1 class="title-6">Bem vindo
+                                <h1 class="title-6">
                                     <span>
                                         <?php echo $_SESSION["nome"]; ?>
                                     </span>
@@ -95,8 +97,8 @@
                                 <aside class="menu-sidebar3 js-spe-sidebar">
                                     <nav class="navbar-sidebar2 navbar-sidebar3">
                                         <ul class="list-unstyled navbar__list">
-                                            <li class="active has-sub">
-                                                <a href="#">
+                                            <li>
+                                                <a href="home.php">
                                                     <i class="fas fa-tachometer-alt"></i>Home
                                                 </a>
                                             </li>
@@ -119,8 +121,8 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li>
-                                                <a href="relatorios.php">
+                                            <li class="active has-sub">
+                                                <a href="#">
                                                     <i class="fas fa-clipboard"></i>Relatórios
                                                 </a>
                                             </li>
@@ -131,41 +133,53 @@
                         </div>
                         <div class="col-xl-9">
                             <!-- PAGE CONTENT-->
-                            <div class="page-content">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="au-card m-b-30">
-                                            <div class="au-card-inner">
-                                                <h3 class="title-2 m-b-40">Single Bar Chart</h3>
-                                                <canvas id="singelBarChart"></canvas>
+                            <div class="card">
+                                <form action="gerarPdf.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="card-header">
+                                        <strong>RELATÓRIO</strong>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="row form-group">
+                                            <div class="col-12 col-md-9">
+                                                <p class="form-control-static">Selecione as opções abaixo para gerar um documento PDF.</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="au-card m-b-30">
-                                            <div class="au-card-inner">
-                                                <h3 class="title-2 m-b-40">Doughut Chart</h3>
-                                                <canvas id="doughutChart"></canvas>
+                                        <section class="alert-wrap p-t-70"></section>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Opções:</label>
+                                            </div>
+                                            <div class="col col-md-9">
+                                                <div class="form-check">
+                                                    <div class="checkbox">
+                                                        <label for="produtos" class="form-check-label ">
+                                                            <input type="checkbox" id="produtos" name="option-produtos" value="produtos" class="form-check-input">produtos
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label for="categorias" class="form-check-label ">
+                                                            <input type="checkbox" id="categorias" name="option-categorias" value="categorias" class="form-check-input">categorias
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <section class="alert-wrap p-t-70">
-                                            <div class="alert alert-light" role="alert">
-                                                <h3 class="alert-heading">
-                                                    <strong class="card-title">Últimos Registros</strong>
-                                                </h3>
+                                        <section class="alert-wrap p-t-70"></section>
+                                        <?php if(isset($_SESSION["mensagem"])) : ?>
+                                            <div class="alert alert-<?= $_SESSION["tipo_mensagem"]; ?>" role="alert">
+                                                <?= $_SESSION["mensagem"]; ?>
                                             </div>
-                                        </section>
-                                        <!-- DATA TABLE-->
-                                        <div class="table-responsive m-b-40" style="height: 400px;overflow-y: scroll; display:block;">
-                                            <table class="table table-borderless table-data3">
-                                                <?php echo all_data("DESC"); ?>
-                                            </table>
-                                        </div>
-                                        <!-- END DATA TABLE -->
+                                        <?php
+                                            unset($_SESSION["mensagem"]);
+                                            unset($_SESSION["tipo_mensagem"]);
+                                            endif;
+                                        ?>
                                     </div>
-                                </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
+                                        <button type="reset" class="btn btn-danger btn-sm">Cancelar</button>
+                                    </div>
+                                </form>
                             </div>
                             <!-- END PAGE CONTENT-->
                         </div>
@@ -174,10 +188,12 @@
             </section>
         </div>
         <!-- END PAGE CONTENT  -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    <p>Copyright © 2021 Drocsid. All rights reserved.</p>
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>Copyright © 2021 Drocsid. All rights reserved.</p>
+                    </div>
                 </div>
             </div>
         </div>

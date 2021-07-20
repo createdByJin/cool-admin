@@ -128,6 +128,11 @@
                                                         </li>
                                                     </ul>
                                                 </li>
+                                                <li>
+                                                    <a href="relatorios.php">
+                                                        <i class="fas fa-clipboard"></i>Relatórios
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </nav>
                                     </aside>
@@ -179,12 +184,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <button type="submit" class="btn btn-primary btn-sm">
-                                                            <i class="fa fa-dot-circle-o"></i> Salvar
-                                                        </button>
-                                                        <button type="reset" class="btn btn-danger btn-sm">
-                                                            <i class="fa fa-ban"></i> Limpar
-                                                        </button>
+                                                        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                                                        <button type="reset" class="btn btn-danger btn-sm">Limpar</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -210,17 +211,17 @@
                                 </div>
                             <!-- END BLUE TABLE -->                 
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2021 Drocsid. All rights reserved.</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </section>
             </div>
         <!-- END PAGE CONTENT  -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2021 Drocsid. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>

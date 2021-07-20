@@ -126,6 +126,11 @@
                                                 </li>
                                             </ul>
                                         </li>
+                                        <li>
+                                            <a href="relatorios.php">
+                                                <i class="fas fa-clipboard"></i>Relatórios
+                                            </a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </aside>
@@ -206,12 +211,8 @@
                                                 </div>
                                             </div>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-dot-circle-o"></i> Salvar
-                                                </button>
-                                                <button type="reset" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-ban"></i> Limpar
-                                                </button>
+                                                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                                                <button type="reset" class="btn btn-danger btn-sm">Limpar</button>
                                             </div>
                                         </form>
                                     </div>
