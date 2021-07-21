@@ -139,9 +139,9 @@
                         <div class="col-xl-9">
                             <!-- PAGE CONTENT-->
                             <div class="card">
-                                <form action="gerarPdf.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <form action="gerarPdf.php" method="post" target="_blank" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="card-header">
-                                        <strong>RELATÓRIO</strong>
+                                        <strong>GERAR PDF</strong>
                                     </div>
                                     <div class="card-body card-block">
                                         <div class="row form-group">
@@ -149,29 +149,8 @@
                                                 <p class="form-control-static">Selecione as opções abaixo para gerar um documento PDF.</p>
                                             </div>
                                         </div>
-                                        <section class="alert-wrap p-t-70"></section>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label class=" form-control-label">Opções:</label>
-                                            </div>
-                                            <div class="col col-md-9">
-                                                <div class="form-check">
-                                                    <div class="checkbox">
-                                                        <label for="produtos" class="form-check-label ">
-                                                            <input type="checkbox" id="produtos" name="option-produtos" value="produtos" class="form-check-input">produtos
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label for="categorias" class="form-check-label ">
-                                                            <input type="checkbox" id="categorias" name="option-categorias" value="categorias" class="form-check-input">categorias
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <section class="alert-wrap p-t-70"></section>
                                         <?php if(isset($_SESSION["mensagem"])) : ?>
-                                            <div class="alert alert-<?= $_SESSION["tipo_mensagem"]; ?>" role="alert">
+                                            <div class="alert alert-<?= $_SESSION["tipo_mensagem"]; ?> col-12 col-md-9" role="alert">
                                                 <?= $_SESSION["mensagem"]; ?>
                                             </div>
                                         <?php
@@ -179,10 +158,23 @@
                                             unset($_SESSION["tipo_mensagem"]);
                                             endif;
                                         ?>
+                                        <section class="alert-wrap p-t-70"></section>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="select" class=" form-control-label">Opções:</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <select name="select" id="select" required class="form-control">
+                                                    <option value="">Selecione</option>
+                                                    <option value="categorias">Categorias</option>
+                                                    <option value="produtos">Produtos</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <section class="alert-wrap p-t-70"></section>
                                     </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
-                                        <button type="reset" class="btn btn-danger btn-sm">Cancelar</button>
                                     </div>
                                 </form>
                             </div>

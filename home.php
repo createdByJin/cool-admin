@@ -144,8 +144,8 @@
                                     <div class="col-lg-6">
                                         <div class="au-card m-b-30">
                                             <div class="au-card-inner">
-                                                <h3 class="title-2 m-b-40">Single Bar Chart</h3>
-                                                <canvas id="singelBarChart"></canvas>
+                                                <h3 class="title-2 m-b-40">ITENS CADASTRADOS NA ÚLTIMA SEMANA</h3>
+                                                <canvas id="singelBarChart2"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -215,6 +215,53 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+
+    <script>
+        // single bar chart
+    var ctx = document.getElementById("singelBarChart2");
+    if (ctx) {
+      ctx.height = 150;
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["abc", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
+          datasets: [
+            {
+              label: "TESTE",
+              data: [<?php echo "10"; ?>, 55, 75, 81, 56, 55, 40],
+              borderColor: "rgba(0, 123, 255, 0.9)",
+              borderWidth: "0",
+              backgroundColor: "rgba(0, 123, 255, 0.5)"
+            }
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                fontFamily: "Poppins"
+
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                fontFamily: "Poppins"
+              }
+            }]
+          }
+        }
+      });
+    }
+
+    </script>
 
 </body>
 

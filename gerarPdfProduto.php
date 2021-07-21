@@ -3,7 +3,7 @@
     include("FPDF/fpdf.php");
     include("pdfProdutos.php");
 
-    $produtos = getPdf();
+    $produtos = getPdfProdutos();
 
     $pdf = new FPDF();
     $pdf->AddPage();

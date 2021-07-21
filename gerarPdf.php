@@ -3,26 +3,18 @@
         session_start();
     }
 
-    $produtos = $_POST["option-produtos"];
-    $categorias = $_POST["option-categorias"];
+    $opcao_pdf = $_POST["select"];
 
-    // var_dump($produtos);
-    // var_dump($categorias);
-    // die();
-
-    if ($produtos == NULL && $categorias == NULL)
+    if ($opcao_pdf == "")
     {      
         $_SESSION["tipo_mensagem"] = "warning";
         $_SESSION["mensagem"] = "Favor selecione os campos para continuar!";
 
         header("location: relatorios.php");
-    } else if ($produtos != NULL && $categorias != NULL)
-    {
-        // falta implementar o PDF para todos os campos selecionados
-    } else if ($produtos == NULL)
+    } else if ($opcao_pdf == "categorias")
     {
         header("location: gerarPdfCategoria.php");
-    } else
+    } else if ($opcao_pdf == "produtos")
     {
         header("location: gerarPdfProduto.php");
     }

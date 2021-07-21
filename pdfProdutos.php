@@ -1,5 +1,5 @@
 <?php
-    function getPdf()
+    function getPdfProdutos()
     {
         include("database/conection.php");
     

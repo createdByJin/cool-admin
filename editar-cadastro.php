@@ -160,7 +160,6 @@
                                                    
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary btn-sm"></i> Salvar</button>
-                                                <button type="reset" class="btn btn-danger btn-sm">Limpar</button>
                                             </div>
                                         </form>
                                     </div>

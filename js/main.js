@@ -1207,7 +1207,7 @@
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
+          labels: ["abc", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
           datasets: [
             {
               label: "My First dataset",
