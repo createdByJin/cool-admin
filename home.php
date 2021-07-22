@@ -8,6 +8,7 @@
     }
     
     include("produtos/listaProdutos.php");
+    include("produtos/grafico.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -141,22 +142,22 @@
                             <!-- PAGE CONTENT-->
                             <div class="page-content">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="au-card m-b-30">
                                             <div class="au-card-inner">
-                                                <h3 class="title-2 m-b-40">ITENS CADASTRADOS NA ÚLTIMA SEMANA</h3>
+                                                <h3 class="title-2 m-b-40">CATEGORIAS CADASTRADAS</h3>
                                                 <canvas id="singelBarChart2"></canvas>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <!-- <div class="col-lg-12">
                                         <div class="au-card m-b-30">
                                             <div class="au-card-inner">
-                                                <h3 class="title-2 m-b-40">Doughut Chart</h3>
-                                                <canvas id="doughutChart"></canvas>
+                                                <h3 class="title-2 m-b-40">Categorias Cadastradas</h3>
+                                                <canvas id="doughutChart2"></canvas>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-12">
                                         <section class="alert-wrap p-t-70">
                                             <div class="alert alert-light" role="alert">
@@ -215,7 +216,14 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <?php 
+        $grafico_dados = count_categorias();
 
+        foreach($grafico_dados as $dado) {
+            $grafico_labels[] = $dado['descricao'];
+            $grafico_values[] = $dado['qtd_produtos'];
+        }
+    ?>
     <script>
         // single bar chart
     var ctx = document.getElementById("singelBarChart2");
@@ -224,11 +232,11 @@
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ["abc", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
+          labels: <?php echo json_encode($grafico_labels); ?>,
           datasets: [
             {
-              label: "TESTE",
-              data: [<?php echo "10"; ?>, 55, 75, 81, 56, 55, 40],
+              label: "legenda",
+              data: <?php echo json_encode($grafico_values); ?>,
               borderColor: "rgba(0, 123, 255, 0.9)",
               borderWidth: "0",
               backgroundColor: "rgba(0, 123, 255, 0.5)"
@@ -257,6 +265,53 @@
               }
             }]
           }
+        }
+      });
+    }
+
+    function myFunction(item) {
+        item; 
+    }
+
+    //doughut chart
+    var ctx = document.getElementById("doughutChart2");
+    if (ctx) {
+      ctx.height = 150;
+      var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: [45, 25, 20, 10],
+            backgroundColor: [
+              "rgba(0, 123, 255,0.9)",
+              "rgba(0, 123, 255,0.7)",
+              "rgba(0, 123, 255,0.5)",
+              "rgba(0,0,0,0.07)"
+            ],
+            hoverBackgroundColor: [
+              "rgba(0, 123, 255,0.9)",
+              "rgba(0, 123, 255,0.7)",
+              "rgba(0, 123, 255,0.5)",
+              "rgba(0,0,0,0.07)"
+            ]
+
+          }],
+          labels: [
+            "Eletrônicos",
+            "Roupas",
+            "Green",
+            "Green"
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
         }
       });
     }
