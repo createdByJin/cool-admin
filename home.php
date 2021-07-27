@@ -1,11 +1,14 @@
 <?php
-    if(session_status() !== PHP_SESSION_ACTIVE){
+     if(session_status() !== PHP_SESSION_ACTIVE){
         session_start();
     }
     
     if($_SESSION['logado'] != 1){
-        header("location: home.php");
+        header("location: index.php");
     }
+    
+    include("produtos/listaProdutos.php");
+    include("produtos/grafico.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +23,7 @@
     <link rel="shortcut icon" href="images/icon/fav-icon-drocsid.png" type="image/x-icon">
 
     <!-- Title Page-->
-    <title>Relatórios - Drocsid</title>
+    <title>Home - Drocsid</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -47,7 +50,6 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-       
         <!-- WELCOME-->
         <section class="welcome2 p-t-40 p-b-55">
             <div class="container">
@@ -58,7 +60,7 @@
                                 <span class="au-breadcrumb-span">Você está em:</span>
                                 <ul class="list-unstyled list-inline au-breadcrumb__list">
                                     <li class="list-inline-item active">
-                                        <a href="#">Relatórios</a>
+                                        <a href="#">Home</a>
                                     </li>
                                 </ul>
                             </div>
@@ -69,7 +71,7 @@
                     <div class="col-md-12">
                         <div class="welcome2-inner m-t-60">
                             <div class="welcome2-greeting">
-                                <h1 class="title-6">
+                                <h1 class="title-6">Bem vindo
                                     <span>
                                         <?php echo $_SESSION["nome"]; ?>
                                     </span>
@@ -102,8 +104,8 @@
                                 <aside class="menu-sidebar3 js-spe-sidebar">
                                     <nav class="navbar-sidebar2 navbar-sidebar3">
                                         <ul class="list-unstyled navbar__list">
-                                            <li>
-                                                <a href="home.php">
+                                            <li class="active has-sub">
+                                                <a href="#">
                                                     <i class="fas fa-tachometer-alt"></i>Home
                                                 </a>
                                             </li>
@@ -126,8 +128,8 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="active has-sub">
-                                                <a href="#">
+                                            <li>
+                                                <a href="relatorios.php">
                                                     <i class="fas fa-clipboard"></i>Relatórios
                                                 </a>
                                             </li>
@@ -138,45 +140,42 @@
                         </div>
                         <div class="col-xl-9">
                             <!-- PAGE CONTENT-->
-                            <div class="card">
-                                <form action="gerarPdf.php" method="post" target="_blank" enctype="multipart/form-data" class="form-horizontal">
-                                    <div class="card-header">
-                                        <strong>GERAR PDF</strong>
-                                    </div>
-                                    <div class="card-body card-block">
-                                        <div class="row form-group">
-                                            <div class="col-12 col-md-9">
-                                                <p class="form-control-static">Selecione as opções abaixo para gerar um documento PDF.</p>
+                            <div class="page-content">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="au-card m-b-30">
+                                            <div class="au-card-inner">
+                                                <h3 class="title-2 m-b-40">CATEGORIAS CADASTRADAS</h3>
+                                                <canvas id="singelBarChart2"></canvas>
                                             </div>
                                         </div>
-                                        <?php if(isset($_SESSION["mensagem"])) : ?>
-                                            <div class="alert alert-<?= $_SESSION["tipo_mensagem"]; ?> col-12 col-md-9" role="alert">
-                                                <?= $_SESSION["mensagem"]; ?>
-                                            </div>
-                                        <?php
-                                            unset($_SESSION["mensagem"]);
-                                            unset($_SESSION["tipo_mensagem"]);
-                                            endif;
-                                        ?>
-                                        <section class="alert-wrap p-t-70"></section>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="select" class=" form-control-label">Opções:</label>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <select name="select" id="select" required class="form-control">
-                                                    <option value="">Selecione</option>
-                                                    <option value="categorias">Categorias</option>
-                                                    <option value="produtos">Produtos</option>
-                                                </select>
+                                    </div>
+                                    <!-- <div class="col-lg-12">
+                                        <div class="au-card m-b-30">
+                                            <div class="au-card-inner">
+                                                <h3 class="title-2 m-b-40">Categorias Cadastradas</h3>
+                                                <canvas id="doughutChart2"></canvas>
                                             </div>
                                         </div>
+                                    </div> -->
+                                    <div class="col-md-12">
+                                        <section class="alert-wrap p-t-70">
+                                            <div class="alert alert-light" role="alert">
+                                                <h3 class="alert-heading">
+                                                    <strong class="card-title">Últimos Registros</strong>
+                                                </h3>
+                                            </div>
+                                        </section>
+                                        <!-- DATA TABLE-->
+                                        <div class="table-responsive m-b-40" style="height: 400px;overflow-y: scroll; display:block;">
+                                            <table class="table table-borderless table-data3">
+                                                <?php echo all_data("DESC"); ?>
+                                            </table>
+                                        </div>
+                                        <!-- END DATA TABLE -->
                                         <section class="alert-wrap p-t-70"></section>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                             <!-- END PAGE CONTENT-->
                         </div>
@@ -185,12 +184,10 @@
             </section>
         </div>
         <!-- END PAGE CONTENT  -->
-        <div class="page-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright">
-                        <p>Copyright © 2021 Drocsid. All rights reserved.</p>
-                    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2021 Drocsid. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -219,6 +216,107 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <?php 
+        $grafico_dados = count_categorias();
+
+        foreach($grafico_dados as $dado) {
+            $grafico_labels[] = $dado['descricao'];
+            $grafico_values[] = $dado['qtd_produtos'];
+        }
+    ?>
+    <script>
+        // single bar chart
+    var ctx = document.getElementById("singelBarChart2");
+    if (ctx) {
+      ctx.height = 150;
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: <?php echo json_encode($grafico_labels); ?>,
+          datasets: [
+            {
+              label: "legenda",
+              data: <?php echo json_encode($grafico_values); ?>,
+              borderColor: "rgba(0, 123, 255, 0.9)",
+              borderWidth: "0",
+              backgroundColor: "rgba(0, 123, 255, 0.5)"
+            }
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                fontFamily: "Poppins"
+
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                fontFamily: "Poppins"
+              }
+            }]
+          }
+        }
+      });
+    }
+
+    function myFunction(item) {
+        item; 
+    }
+
+    //doughut chart
+    var ctx = document.getElementById("doughutChart2");
+    if (ctx) {
+      ctx.height = 150;
+      var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: [45, 25, 20, 10],
+            backgroundColor: [
+              "rgba(0, 123, 255,0.9)",
+              "rgba(0, 123, 255,0.7)",
+              "rgba(0, 123, 255,0.5)",
+              "rgba(0,0,0,0.07)"
+            ],
+            hoverBackgroundColor: [
+              "rgba(0, 123, 255,0.9)",
+              "rgba(0, 123, 255,0.7)",
+              "rgba(0, 123, 255,0.5)",
+              "rgba(0,0,0,0.07)"
+            ]
+
+          }],
+          labels: [
+            "Eletrônicos",
+            "Roupas",
+            "Green",
+            "Green"
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+    }
+
+    </script>
 
 </body>
 

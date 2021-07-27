@@ -112,7 +112,7 @@
                                         <nav class="navbar-sidebar2 navbar-sidebar3">
                                             <ul class="list-unstyled navbar__list">
                                                 <li>
-                                                    <a href="index.php">
+                                                    <a href="home.php">
                                                         <i class="fas fa-tachometer-alt"></i>Home
                                                     </a>
                                                 </li>

@@ -37,14 +37,14 @@
             $_SESSION['logado'] = 1;
 
             //Acessar a tela inicial
-            header('location: ../index.php');
+            header('location: ../home.php');
             
         }        
     }else{
         //Retorna para tela de login
         $_SESSION["tipo_mensagem"] = "danger";
         $_SESSION["mensagem"] = "E-mail ou senha inválidos";
-        header('location: ../index.php');
+        header('location: ../home.php');
     } 
 
     
