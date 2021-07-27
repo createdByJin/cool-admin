@@ -6,12 +6,6 @@
     
     include("../database/conection.php");
 
-    // var_dump($id_prod);
-    // var_dump($desc_prod);
-    // var_dump($quant_prod);
-    // var_dump($categ_prod);
-    // die();
-
     $sql = "UPDATE produtos
             SET id_produto = $id_prod,
                 descricao = '$desc_prod',
@@ -22,8 +16,5 @@
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
 
-    // var_dump($result);
-    // die();
-
-    header("location: ../home.php");
+    header("location: ../index.php");
 ?>

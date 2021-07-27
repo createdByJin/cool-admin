@@ -1,15 +1,4 @@
 <?php
-// "Eletrônicos",
-// "Mon",
-// "Tu",
-// "Wed",
-// "Th",
-// "Fri",
-// "Sat",
-// "Wed",
-// "Th",
-// "Fri",
-// "Sat"
 
     function todas_categorias()
     {
@@ -56,9 +45,6 @@
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
 
-        // var_dump($sql);
-        // die();
-
         if (mysqli_num_rows($result) > 0)
         {
             $array = array();
@@ -67,8 +53,7 @@
             {
                 array_push($array, $linha);
             }
-            // var_dump($array);
-            // die();
+ 
             return $array;
         }
     }

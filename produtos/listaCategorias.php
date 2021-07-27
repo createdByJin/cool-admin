@@ -8,10 +8,7 @@
 
         $result = mysqli_query($conn,$sql);
         mysqli_close($conn);
-
-        // var_dump($result);
-        // die();
-
+        
         $list = '';
 
         if (mysqli_num_rows($result) > 0) {

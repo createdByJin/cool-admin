@@ -16,8 +16,7 @@
             while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 array_push($array, $linha);
             }
-            // var_dump($array);
-            // die();            
+
             return $array;
         }
     }

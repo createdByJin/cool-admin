@@ -4,7 +4,7 @@
     }
     
     if($_SESSION['logado'] != 1){
-        header("location: login.php");
+        header("location: index.php");
     }
     
     include("produtos/listaCategorias.php");
@@ -111,7 +111,7 @@
                                 <nav class="navbar-sidebar2 navbar-sidebar3">
                                     <ul class="list-unstyled navbar__list">
                                         <li>
-                                            <a href="home.php">
+                                            <a href="index.php">
                                                 <i class="fas fa-tachometer-alt"></i>Home
                                             </a>
                                         </li>

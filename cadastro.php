@@ -87,7 +87,7 @@
                             <div class="register-link">
                                 <p>
                                     Já possui uma conta?
-                                    <a href="login.php">Entre</a>
+                                    <a href="index.php">Entre</a>
                                 </p>
                             </div>
                         </div>

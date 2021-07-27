@@ -5,10 +5,6 @@
     include("../database/conection.php");
     session_start();
 
-    // var_dump($id_categoria);
-    // var_dump($desc_categoria);
-    // die();
-
     if ($desc_categoria == 0 || $desc_categoria == "") {
             
         $_SESSION["tipo_mensagem"] = "danger";
@@ -20,10 +16,7 @@
 
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
-
-        // var_dump($result);
-        // die();
-
+        
         $_SESSION["tipo_mensagem"] = "success";
         $_SESSION["titulo_mensagem"] = "SUCESSO";
         $_SESSION["mensagem"] = "Categoria inserida com sucesso!";

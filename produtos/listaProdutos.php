@@ -14,14 +14,8 @@
                 ." ORDER BY p.id_produto "
                 .$classificacao;
 
-        // var_dump($sql);
-        // die();
-
         $result = mysqli_query($conn,$sql);
         mysqli_close($conn);
-
-        // var_dump($result);
-        // die();
 
         $list = "";
 
@@ -117,9 +111,6 @@
 
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
-
-        // var_dump($result);
-        // die();
 
         $list = "";
 

@@ -7,12 +7,6 @@
     include("../database/conection.php");
     session_start();
 
-    // var_dump($id_prod);
-    // var_dump($desc_prod);
-    // var_dump($quant_prod);
-    // var_dump($categ_prod);
-    // die();
-
     if ($desc_prod == 0 || $categ_prod === "0" || $desc_prod == "" || $categ_prod === "0") {
             
         $_SESSION["tipo_mensagem"] = "danger";
@@ -24,15 +18,6 @@
 
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
-
-        // var_dump($result);
-        // die();
-
-        // if($result == false) {
-        //     $_SESSION["tipo_mensagem"] = "danger";
-        //     $_SESSION["titulo_mensagem"] = "FALHA";
-        //     $_SESSION["mensagem"] = "Favor preencher todos os campos!";
-        // }
 
         $_SESSION["tipo_mensagem"] = "success";
         $_SESSION["titulo_mensagem"] = "SUCESSO";
